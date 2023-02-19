@@ -34,6 +34,7 @@ Tech team
     - Plan an example mapping workshop if US has complex business
     - Assignation of User Stories to devs or binome if pair programming
     - Splitting in technical sub task done asynchronously by each assignee on Wednesday. At this moment the estimation can be moved from the US to the tech subtasks.
+    - (optional) adding acceptance criteria for each subtask
 
 
 🕘 **full team** Wednesday morning, meeting at 10:30 - 11:30
