@@ -37,7 +37,8 @@ Tech team:
    - Did we meet any [Technical Obstacles](https://docs.google.com/spreadsheets/d/1JNJU-pOwqTwDnI49YVC6DhZps8tVyQGCMlenqe4HG84/edit?usp=drivesdk) ?
      - Ask the 5 WHYs to figure out the true root cause
      - What countermeasure can we put in place and improve our standards ?
-2. take a look at the next User Stories prepared by the product team.
+2. Prepare the demo
+3. take a look at the next User Stories prepared by the product team.
    - Blink estimation in fibonacci points.
    - Do we understand the need ? Do we have questions for the product team ?
    - Plan an example mapping workshop if US has complex business rules
