@@ -1,5 +1,11 @@
 # How to write tests
 
+## Summary
+- [Generic guidelines](https://github.com/MRcalendar/how-do-we-work/edit/main/webapp/testing.md#generic-guidelines)
+- [Coding guidelines](https://github.com/MRcalendar/how-do-we-work/edit/main/webapp/testing.md#coding-guidelines)
+
+
+## Introduction
 Testing in the webapp is done primarily with `@testing-library/react`, ideally using TDD.
 
 Tests cover different kind of scopes :
@@ -57,6 +63,8 @@ Scenario testing is the most complex test we have right now. It usually consists
 - expecting the correct behavior
 
 ## Coding guidelines
+
+> **⚠️⚠️⚠️ Tests should NEVER be in the `/src/pages` folder** [See more](https://github.com/MRcalendar/how-do-we-work/blob/alan-test-folder/webapp/troubleshooting.md#possible-cause--test-files-are-present-in-the-srcpages-folder)
 
 Here are the common things we do when writing tests, and how to do it
 - mock API calls
