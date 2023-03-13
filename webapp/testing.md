@@ -64,7 +64,7 @@ Scenario testing is the most complex test we have right now. It usually consists
 
 ## Coding guidelines
 
-Tests should NEVER be in the `/src/pages` folder
+> **⚠️⚠️⚠️ Tests should NEVER be in the `/src/pages` folder** [See more](https://github.com/MRcalendar/how-do-we-work/blob/alan-test-folder/webapp/troubleshooting.md#possible-cause--test-files-are-present-in-the-srcpages-folder)
 
 Here are the common things we do when writing tests, and how to do it
 - mock API calls
