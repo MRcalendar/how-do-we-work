@@ -1,7 +1,11 @@
 # How to write tests
-## https://github.com/MRcalendar/how-do-we-work/edit/main/webapp/testing.md#generic-guidelines
-## https://github.com/MRcalendar/how-do-we-work/edit/main/webapp/testing.md#coding-guidelines
 
+## Summary
+- [Generic guidelines](https://github.com/MRcalendar/how-do-we-work/edit/main/webapp/testing.md#generic-guidelines)
+- [Coding guidelines](https://github.com/MRcalendar/how-do-we-work/edit/main/webapp/testing.md#coding-guidelines)
+
+
+## Introduction
 Testing in the webapp is done primarily with `@testing-library/react`, ideally using TDD.
 
 Tests cover different kind of scopes :
