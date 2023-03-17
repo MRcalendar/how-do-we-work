@@ -161,3 +161,13 @@ describe("...", () => {
   });
 });
 ```
+
+### Debugging tests
+Ways to check accessible elements
+- **logRoles()**: To identify every element returned with their respective computed roles.
+- **screen.debug(undefined, `expected_number_of_displayed_lines`)**: To access more HTML output than default returns.
+- **testing playgrounds** : 
+    - used with **browser extension** to find the easiest access to an HTML Element ;
+    - used with **screen.logTestingPlaygroundURL** to copy generated URL at the top of the test output and open in browser to see and interract with computed renderings.
+
+
