@@ -46,6 +46,9 @@ Tech team:
    - Aach assignee asynchronously split in technical sub task done asynchronously after. At this moment the estimation can be moved from the US to the tech subtasks.
    - (optional) adding acceptance criteria for each subtask
 
+a new epic (aka project) needs to be correctly understood and splitted before starting development. It needs more time than this time constrained ritual.
+In this case, we do a workload split described in details in this [page](https://github.com/MRcalendar/how-do-we-work/blob/main/webapp/workload-split.md)
+
 ### Cycle review - full team
 
 🕘 Wednesday morning, meeting at 10:30 - 11:30
