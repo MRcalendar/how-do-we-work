@@ -4,7 +4,7 @@
 
 ## Daily ritual
 
-🕘 Meeting at 9:00 ~ 10 min **Tuesday**, **Thursday** and **Friday** morning
+🕘 Meeting at 9:30 ~ 10 min **Tuesday**, **Thursday** and **Friday** morning
 
 **What to say ?**
 
@@ -14,9 +14,9 @@
 
 ## Cycle rituals
 
-📅 one week cycle, from starting on Thursday
+📅 one week cycle, starting on Thursday
 
-### Grooming - Product team
+### Objectives meeting - Product team
 
 🕘 Tuesday morning, meeting at 10:30 - 11:30
 
@@ -25,11 +25,9 @@ Product team prepare US/Tasks based on the quarter projects/epics
 - Adjust tasks if bugs/urgent improvements
 - Any urgent problems to retrieve from the Problem Sheet from the past 7 days?
 
-### Grooming - Tech team
+### Objectives meeting - Product & tech team
 
 🕘 Tuesday afternoon, meeting at 15:00 - 16:00
-
-Tech team:
 
 1. review the current cycle
    - Did we complete it? If not, why?
@@ -37,39 +35,27 @@ Tech team:
    - Did we meet any [Technical Obstacles](https://docs.google.com/spreadsheets/d/1JNJU-pOwqTwDnI49YVC6DhZps8tVyQGCMlenqe4HG84/edit?usp=drivesdk) ?
      - Ask the 5 WHYs to figure out the true root cause
      - What countermeasure can we put in place and improve our standards ?
-2. Prepare the demo
-3. take a look at the next User Stories prepared by the product team.
-   - Blink estimation in fibonacci points.
-   - Do we understand the need ? Do we have questions for the product team ?
-   - Plan an example mapping workshop if US has complex business rules
-   - Assignation of User Stories to devs or binome if pair programming
-   - Aach assignee asynchronously split in technical sub task done asynchronously after. At this moment the estimation can be moved from the US to the tech subtasks.
-   - (optional) adding acceptance criteria for each subtask
+2. Product present the next objectives defined as task (or US if we want)
+3. Assignation of tasks to devs or binome if pair programming
+4. Blink estimation
+   - Do we understand the need ? Do we have questions ? 
+   - Estimation should range 1 to 3 (3 meaning 3 days max, validation by product included)
+   - (optional) Plan an example mapping workshop if US has complex business rules
+   - (optional) Split into testable tasks in coordination with product
+   - (optional) adding acceptance criteria
 
 a new epic (aka project) needs to be correctly understood and splitted before starting development. It needs more time than this time constrained ritual.
 In this case, we do a workload split described in details in this [page](https://github.com/MRcalendar/how-do-we-work/blob/main/webapp/workload-split.md)
 
-### Cycle review - full team
+### Feedback meeting - full team
 
-🕘 Wednesday morning, meeting at 10:30 - 11:30
+🕘 Wednesday morning, meeting at 9:30 - 10:30
 
-1. Demo of the features delivered.
+**Before the meeting, we should have each objectives assigned to people splitted in tasks with no more than 3 days to flow from "In Progess" to "Done"**
+
+1. If any, questions and feedback from business
 2. If any, presentation of the tech obstacles and countermeasures
-3. Discussion with the product team about the next user stories.
-
-- Be sure we have a shared understanding between Product & Tech. Ask many questions. Think about edge cases.
-
-## Estimation
-
-1 - easy / fast. (typo, small design fix, simple new business rules to add with unit tests.. )
-
-2 - more code, still fast and easy.
-
-3 - we need to change a more stuff, should take 1 day or max 2 days.
-
-5 - half sprint maybe, more complex, more code.
-
-8 - entire week, probably a new feature and need to think how to implement (surely too much, we need to push on splitting this in smaller US
+3. Presentation of the team objectives
 
 ## Definition
 
