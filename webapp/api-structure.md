@@ -17,6 +17,10 @@ A file in that folder is supposed to represent a URL & method (GET, POST, etc...
 
 > **We use kebab-case for file names**
 
+> There are 2 helpers that should be used when building endpoint files
+> - the `ApiResponse<T>` interface, used when the response is wrapped in a "data" property
+> - the `getAPIQueryKey(path)` function, used to consistently get the value for the `queryKey` parameter of any given path
+
 An endpoint will be defined in two files :
 - the first one for using that endpoint. we'll call it the **main file**
 - the second one for mocking that endpoint. we'll call it the **mock file**
@@ -42,28 +46,63 @@ Ex:
 
 The main file will be named after the endpoint intent.
 We are going to reuse that intent for naming inside that file, but using TitleCase instead of kebab-case
-Ex: `post-create-collection.ts` => endpoint's intent is `CreateCollection`
+For the sake of the example, let's pretend we're doing a real endpoint.
 
-The **main file** content include :
-- a `path` function
-  - responsible for building the path
-- a `fetch` function 
-  - responsible for sending the request (using **axios**)
-- a `useCreateCollection` function
+We see in Swagger a new endpoint `GET /brand/{brandId}/collections`.
+The main file will be named `get-brand-collections.ts` and the base for its content will be `GetBrandCollections`
+
+The **main file** will include :
+- a `GetBrandCollectionsParams` interface (using the same name as the file)
+  - responsible for describing parameters needed to complete the request
+  - **when the endpoint has only one parameter, we should still wrap it in an object, it gives better context on what is needed to complete the request**
+- a `GetBrandCollectionsResponse` interface for the API output (**USE ONLY SCALAR VALUES. NO DATE OR ANY OBJECT**)
+  - responsible for describing what the API will return
+- a `getBrandCollectionsEndpoint` object with :
+  - a `path` method, responsible for building the path
+  - a `fetch` method, responsible for sending the request (using **axios**)
+  - *(Optional)* a `serialize`/`deserialize` function
+    - responsible for mapping scalar values to objects (usually Date objects, but could be anything not scalar)
+    - Remember: **the API output is ALWAYS serialized**
+- a `useGetBrandCollections` function
   - responsible for using **tanstack-query** hooks
   - mutations should invalidate queries here
-- a `CreateCollectionParams` interface (using the same name as the file) for parameters
-  - **use only one parameter with named properties, instead of 2-3 parameters**
-- a `CreateCollectionResponse` interface for the API output (**USE ONLY SCALAR VALUES. NO DATE OR ANY OBJECT**)
-  - responsible for describing what the API will return
-- *(Optional)* a `serialize`/`deserialize` function
-  - Remember: **the API output is ALWAYS serialized**
-  - responsible for mapping scalar values to objects (usually Date objects, but could be anything not scalar)
 
-Example of a main file :
+### How to type outputs ?
 
+Because we will have multiple files with almost the same types everywhere, it can be bothering to repeat the same.
+To avoid that, since we are going to type scalar values only for the API response, we can have interfaces for each entity that can be returned, without its related entities.
+Then in each endpoint, we compose a response type using those interfaces and some Typescript magic (Pick, Omit, &, extends, etc...)
+
+Ex: Assume we have a Portfolio & a Seller interface, with only scalar data in each. An endpoint returning the portfolios with sellers might be typed as :
+```ts
+type GetPortfoliosWithSellersResponse = (Portfolio & { sellers: Seller })[]
 ```
-// @todo
+
+### Example of a main file
+
+```ts
+export interface GetCollectionsParams {
+  brandId: Brand["id"];
+}
+
+export type GetCollectionsResponse = Collection[];
+
+export const getCollectionsEndpoint = {
+  path: ({ brandId }: GetCollectionsParams) => `/brands/${brandId}/collections`,
+  fetch: ({ brandId }): GetCollectionsParams) =>
+      axiosInstance
+        .get<any, ApiResponse<GetCollectionsResponse>>(
+          getCollectionsEndpoint.path({ brandId }),
+        )
+        .then((res) => res.data)
+};
+
+export const useGetCollections = (params: GetCollectionsParams, useQueryOptions: UseQueryOptions<GetCollectionsResponse>) =>
+  useQuery<GetCollectionsResponse>({
+    queryKey: getAPIQueryKey(getCollectionsEndpoint.path(params)),
+    queryFn: () => getCollectionsEndpoint.fetch(params),
+  });
+
 ```
 
 ## Mock file
@@ -75,9 +114,12 @@ Using the same naming convention, the **mock file** contents include :
 - a `mockCreateCollection` function
   - responsible for returning a mocked response (satisfying the API output interface)
 
-Example of a mock file :
+### Example of a mock file
 
-```
-// @todo
+```ts
+
+export function getGetCollectionsHandlerOk(params: GetCollectionsParams, mockedCollections: GetCollectionsResponse) {
+  return rest.get(getCollectionsEndpoint.path(params), (req, res, ctx) => res(ctx.status(200), ctx.json({ data: mockedCollections }));
+}
 ```
 
